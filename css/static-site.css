@@ -1,14 +1,10 @@
 
 /* ============================================
    WOMEN RECLAIMING AI
-   Complete static website stylesheet
-   October 2026
+   COMPLETE WEBSITE STYLESHEET
    ============================================ */
 
-
-/* ============================================
-   1. GENERAL PAGE LAYOUT
-   ============================================ */
+/* GENERAL */
 
 html {
   scroll-behavior: smooth;
@@ -20,22 +16,18 @@ html {
   margin: 75px auto 105px;
 }
 
-/* Navigation links jump to section headings */
-
 #about,
 #events,
 #collaborators {
   scroll-margin-top: 20px;
 }
 
-
 /* ============================================
-   2. HEADER AND LOGO
-   Larger, responsive and safely positioned
+   HEADER AND LOGO
    ============================================ */
 
 header {
-  height: clamp(160px, 23dvh, 230px);
+  height: clamp(150px, 20dvh, 210px);
   position: relative;
   box-sizing: border-box;
 }
@@ -43,24 +35,18 @@ header {
 header img {
   position: absolute;
   display: block;
-
-  top: 14px;
+  top: 12px;
   right: 2%;
-
-  height: calc(100% - 28px);
+  height: calc(100% - 24px);
   width: auto;
-
   max-width: 90vw;
   object-fit: contain;
-
   transform: none;
 }
 
-
 /* ============================================
-   3. GAN PORTRAIT GRID
-   16 columns x 3 rows on desktop
-   Full browser width
+   GAN PORTRAITS
+   16 columns x 5 rows
    ============================================ */
 
 #GANS {
@@ -85,7 +71,6 @@ header img {
 .ri-grid ul {
   display: grid;
   grid-template-columns: repeat(16, minmax(0, 1fr));
-
   width: 100%;
   list-style: none;
   padding: 0;
@@ -96,93 +81,76 @@ header img {
 .ri-grid ul li {
   display: block;
   position: relative;
-
   float: none;
   width: 100%;
   height: auto;
   min-width: 0;
-
   aspect-ratio: 1 / 1;
   overflow: hidden;
   background: #9b1515;
 }
-
-/* Original portrait images */
 
 #myList li > img:not(.portrait-crossfade) {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-
   opacity: 1 !important;
   transition: none !important;
 }
 
-/* Show exactly 48 images on desktop */
+/* Display exactly 80 portraits */
 
-#myList li:nth-child(n+49) {
+#myList li:nth-child(n+81) {
   display: none;
 }
 
-
 /* ============================================
-   4. GAN CROSSFADE
-   Designed for updated site.js
+   SMOOTH IMAGE CROSSFADE
    ============================================ */
 
 #myList li > img.portrait-crossfade {
   position: absolute;
   inset: 0;
   z-index: 2;
-
   display: block;
   width: 100%;
   height: 100%;
-
   object-fit: cover;
   opacity: 0;
   pointer-events: none;
-
   transition: opacity 650ms ease-in-out;
 }
 
-
 /* ============================================
-   5. ABOUT SECTION POSITION
-   About heading appears near bottom of
-   first screen. Video is below the fold.
+   ABOUT SECTION POSITION
+   Keep About below first desktop screen
    ============================================ */
 
 @media (min-width: 601px) {
 
   #about.section {
     margin-top: max(
-      35px,
+      75px,
       calc(
         100dvh
-        - clamp(160px, 23dvh, 230px)
-        - 18.75vw
-        - 110px
+        - clamp(150px, 20dvh, 210px)
+        - 31.25vw
+        + 2px
       )
     );
   }
 
 }
 
-/* The About navigation link targets this
-   section directly, not the spacing above it */
-
-
 /* ============================================
-   6. ABOUT SECTION CONTENT
+   ABOUT CONTENT
    ============================================ */
 
 #about h1 {
   font-size: 32px;
   line-height: 1.2;
   font-weight: 400;
-
   text-align: right;
   margin: 0 2% 18px 0;
 }
@@ -190,7 +158,6 @@ header img {
 #about p {
   font-size: clamp(21px, 2.1vw, 28px);
   line-height: 1.55;
-
   width: 800px;
   max-width: 90%;
 }
@@ -201,30 +168,21 @@ header img {
   width: min(450px, 100%);
 }
 
-/* Original project video */
-
 #about .video {
   display: block;
-
   width: 760px;
   max-width: 100%;
   height: auto;
-
   margin: 24px auto 0;
 }
 
-
 /* ============================================
-   7. ABOUT DESCRIPTION COLUMNS
+   ABOUT DESCRIPTION
    ============================================ */
 
 #description {
   display: grid;
-
-  grid-template-columns:
-    minmax(0, 1fr)
-    minmax(0, 1fr);
-
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 40px;
   align-items: start;
 }
@@ -248,9 +206,8 @@ header img {
   max-width: 80%;
 }
 
-
 /* ============================================
-   8. EVENTS HEADING
+   EVENTS
    ============================================ */
 
 #events {
@@ -260,10 +217,8 @@ header img {
 #events .events-heading {
   display: flex;
   flex-direction: column;
-
   align-items: flex-end;
   justify-content: flex-end;
-
   min-height: 70px;
 }
 
@@ -271,14 +226,10 @@ header img {
   font-size: 32px;
   line-height: 1.2;
   font-weight: 400;
-
   position: relative;
-  text-align: right;
-
   margin: 0 2% 4px 0;
+  text-align: right;
 }
-
-/* Original crossed-out Events heading */
 
 #events .events-heading h1:after {
   right: 0;
@@ -287,47 +238,36 @@ header img {
   height: 16px;
 }
 
-/* Handwritten Workshops and Exhibitions */
-
 #events .events-heading img {
   position: static;
   display: block;
-
   width: auto;
   max-width: 100%;
   height: 42px;
-
   object-fit: contain;
   margin: 0 0 -2px auto;
 }
 
-
-/* ============================================
-   9. EVENTS TABLE
-   ============================================ */
+/* Events table */
 
 #events table {
   width: 100%;
   margin-top: 0;
-
   border-collapse: collapse;
-
   font-size: clamp(13px, 1.2vw, 16px);
   line-height: 1.5;
 }
 
 #events table td {
   padding: 9px 8px;
-
-  border-top: 1px solid rgba(0, 0, 0, 0.55);
+  border-top: 1px solid rgba(0,0,0,0.55);
   vertical-align: top;
 }
 
 #events table td:first-child {
   width: 15%;
   min-width: 145px;
-
-  border-right: 1px solid rgba(0, 0, 0, 0.55);
+  border-right: 1px solid rgba(0,0,0,0.55);
   padding-left: 0;
 }
 
@@ -345,16 +285,14 @@ header img {
   text-decoration: underline;
 }
 
-
 /* ============================================
-   10. COLLABORATORS
+   COLLABORATORS
    ============================================ */
 
 #collaborators h1 {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-
   gap: 2rem;
   margin-bottom: 34px;
 }
@@ -375,19 +313,14 @@ header img {
 
 #collaborators .collaborator-grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
-
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 5%;
 }
 
 #collaborators .collaborator-column {
   list-style: none;
-
   margin: 0;
   padding: 0;
-
   font-size: clamp(14px, 1.2vw, 17px);
   line-height: 1.55;
 }
@@ -402,9 +335,8 @@ header img {
   column-count: 1;
 }
 
-
 /* ============================================
-   11. FOOTER AND CONTACT
+   FOOTER
    ============================================ */
 
 footer .logos a {
@@ -413,16 +345,13 @@ footer .logos a {
 
 footer .contact a {
   color: #ff1212;
-
   text-decoration: underline;
   text-underline-offset: 2px;
-
   overflow-wrap: anywhere;
 }
 
-
 /* ============================================
-   12. DIALOGFLOW CHATBOT
+   DIALOGFLOW CHATBOT
    ============================================ */
 
 df-messenger {
@@ -431,18 +360,14 @@ df-messenger {
   --df-messenger-chat-background-color: #fff;
   --df-messenger-send-icon: #ff1212;
   --df-messenger-user-message: #e7e7e7;
-
   z-index: 1000;
 }
 
-
 /* ============================================
-   13. MOBILE LAYOUT
+   MOBILE
    ============================================ */
 
 @media (max-width: 600px) {
-
-  /* Logo */
 
   header {
     height: auto;
@@ -452,20 +377,15 @@ df-messenger {
   header img {
     position: relative;
     display: block;
-
     top: auto;
     right: auto;
     left: auto;
-
     height: auto;
     width: 80%;
     max-width: 390px;
-
     transform: none;
     margin: 12px 3% 12px auto;
   }
-
-  /* GAN portraits: five columns */
 
   #GANS,
   #ri-grid,
@@ -476,36 +396,28 @@ df-messenger {
 
   #myList,
   .ri-grid ul {
-    grid-template-columns:
-      repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
+  /* Show 25 images on mobile */
   #myList li:nth-child(n+26) {
     display: none;
   }
-
-  /* Sections */
 
   .section {
     width: 85%;
     margin: 45px auto 75px;
   }
 
-  /* Allow About to follow grid naturally */
-
   #about.section {
     margin-top: 45px;
   }
-
-  /* Headings */
 
   #about h1,
   #events .events-heading h1,
   #collaborators h1 span {
     font-size: 25px;
   }
-
-  /* About */
 
   #about h1 {
     margin: 0 0 16px;
@@ -514,7 +426,6 @@ df-messenger {
   #about p {
     font-size: 21px;
     line-height: 1.45;
-
     width: 100%;
     max-width: 100%;
   }
@@ -526,10 +437,7 @@ df-messenger {
   #about .video {
     width: 100%;
     max-width: 100%;
-    margin-top: 24px;
   }
-
-  /* Description stacks into one column */
 
   #description {
     grid-template-columns: 1fr;
@@ -544,8 +452,6 @@ df-messenger {
     font-size: 15px;
     line-height: 1.6;
   }
-
-  /* Events */
 
   #events .events-heading {
     min-height: 65px;
@@ -570,8 +476,6 @@ df-messenger {
     padding-left: 8px;
   }
 
-  /* Collaborators */
-
   #collaborators h1 {
     align-items: center;
   }
@@ -583,9 +487,7 @@ df-messenger {
   }
 
   #collaborators .collaborator-grid {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
   }
 
@@ -595,28 +497,11 @@ df-messenger {
   }
 }
 
-
 /* ============================================
-   14. SMALLER DESKTOPS AND TABLETS
+   SMALLER DESKTOPS
    ============================================ */
 
 @media (min-width: 601px) and (max-width: 900px) {
-
-  header {
-    height: clamp(140px, 20dvh, 190px);
-  }
-
-  #about.section {
-    margin-top: max(
-      65px,
-      calc(
-        100dvh
-        - clamp(140px, 20dvh, 190px)
-        - 18.75vw
-        - 100px
-      )
-    );
-  }
 
   #about p {
     font-size: 21px;
@@ -635,9 +520,8 @@ df-messenger {
   }
 }
 
-
 /* ============================================
-   15. ACCESSIBILITY
+   REDUCED MOTION ACCESSIBILITY
    ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
