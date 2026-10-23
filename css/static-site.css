@@ -27,7 +27,7 @@ html {
    ============================================ */
 
 header {
-  height: clamp(150px, 20dvh, 210px);
+  height: clamp(200px, 20dvh, 280px);
   position: relative;
   box-sizing: border-box;
 }
