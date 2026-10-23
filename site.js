@@ -22,10 +22,11 @@
 
   const desktopVisible = 80;
   const mobileVisible = 25;
-
-  const changeInterval = 1800;
-  const fadeDuration = 650;
-  const maxChanging = 13;
+   
+const changeInterval = 1800;
+const fadeDuration = 650;
+const minChanging = 7;
+const maxChanging = 13;
 
   let photoIndex = desktopVisible;
 
@@ -137,10 +138,11 @@
 
     /* Randomly change 1 to 13 portraits */
 
-    const count = Math.min(
-      available.length,
-      Math.floor(Math.random() * maxChanging) + 1
-    );
+  const count = Math.min(
+  available.length,
+  Math.floor(Math.random() * (maxChanging - minChanging + 1))
+    + minChanging
+);
 
     /* Shuffle without duplicate selections */
 
