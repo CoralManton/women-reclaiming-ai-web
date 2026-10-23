@@ -9,7 +9,7 @@
 
   let idx = 50;
 
-  const changeInterval = 500;  // Change every 0.5 seconds
+  const changeInterval = 100;  // Change every 0.5 seconds
   const fadeDuration = 250;    // Fade transition in milliseconds
 
   items.forEach(li => {
