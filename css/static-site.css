@@ -1,34 +1,18 @@
 
 /* ============================================
    WOMEN RECLAIMING AI
-   Static Website - Main Stylesheet
+   Complete static website stylesheet
+   October 2026
    ============================================ */
 
 
 /* ============================================
-   1. HEADER AND LOGO
+   1. GENERAL PAGE LAYOUT
    ============================================ */
 
-header {
-  height: clamp(150px, 22dvh, 240px);
-  position: relative;
-  box-sizing: border-box;
+html {
+  scroll-behavior: smooth;
 }
-
-header img {
-  position: absolute;
-  top: 16px;
-  right: 2%;
-  height: clamp(110px, 16dvh, 170px);
-  width: auto;
-  max-width: min(32vw, 380px);
-  transform: none;
-}
-
-
-/* ============================================
-   2. GENERAL PAGE LAYOUT
-   ============================================ */
 
 .section {
   width: 80%;
@@ -36,10 +20,47 @@ header img {
   margin: 75px auto 105px;
 }
 
+/* Navigation links jump to section headings */
+
+#about,
+#events,
+#collaborators {
+  scroll-margin-top: 20px;
+}
+
+
+/* ============================================
+   2. HEADER AND LOGO
+   Larger, responsive and safely positioned
+   ============================================ */
+
+header {
+  height: clamp(160px, 23dvh, 230px);
+  position: relative;
+  box-sizing: border-box;
+}
+
+header img {
+  position: absolute;
+  display: block;
+
+  top: 14px;
+  right: 2%;
+
+  height: calc(100% - 28px);
+  width: auto;
+
+  max-width: 90vw;
+  object-fit: contain;
+
+  transform: none;
+}
+
 
 /* ============================================
    3. GAN PORTRAIT GRID
-   Full width, 16 columns and 3 rows
+   16 columns x 3 rows on desktop
+   Full browser width
    ============================================ */
 
 #GANS {
@@ -64,6 +85,7 @@ header img {
 .ri-grid ul {
   display: grid;
   grid-template-columns: repeat(16, minmax(0, 1fr));
+
   width: 100%;
   list-style: none;
   padding: 0;
@@ -73,36 +95,40 @@ header img {
 #myList li,
 .ri-grid ul li {
   display: block;
-  float: none;
   position: relative;
+
+  float: none;
   width: 100%;
   height: auto;
   min-width: 0;
+
   aspect-ratio: 1 / 1;
   overflow: hidden;
   background: #9b1515;
 }
 
-/* Original portrait image */
+/* Original portrait images */
 
 #myList li > img:not(.portrait-crossfade) {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+
   opacity: 1 !important;
   transition: none !important;
 }
 
-/* Show 48 portraits on desktop */
+/* Show exactly 48 images on desktop */
 
 #myList li:nth-child(n+49) {
   display: none;
 }
 
+
 /* ============================================
-   4. GAN IMAGE CROSSFADE
-   Works with the updated site.js
+   4. GAN CROSSFADE
+   Designed for updated site.js
    ============================================ */
 
 #myList li > img.portrait-crossfade {
@@ -121,23 +147,42 @@ header img {
   transition: opacity 650ms ease-in-out;
 }
 
-/* Respect accessibility preferences */
 
-@media (prefers-reduced-motion: reduce) {
-  #myList li > img.portrait-crossfade {
-    transition: none;
+/* ============================================
+   5. ABOUT SECTION POSITION
+   About heading appears near bottom of
+   first screen. Video is below the fold.
+   ============================================ */
+
+@media (min-width: 601px) {
+
+  #about.section {
+    margin-top: max(
+      75px,
+      calc(
+        100dvh
+        - clamp(160px, 23dvh, 230px)
+        - 18.75vw
+        - 110px
+      )
+    );
   }
+
 }
+
+/* The About navigation link targets this
+   section directly, not the spacing above it */
 
 
 /* ============================================
-   5. ABOUT SECTION
+   6. ABOUT SECTION CONTENT
    ============================================ */
 
 #about h1 {
   font-size: 32px;
   line-height: 1.2;
   font-weight: 400;
+
   text-align: right;
   margin: 0 2% 18px 0;
 }
@@ -145,6 +190,7 @@ header img {
 #about p {
   font-size: clamp(21px, 2.1vw, 28px);
   line-height: 1.55;
+
   width: 800px;
   max-width: 90%;
 }
@@ -155,21 +201,30 @@ header img {
   width: min(450px, 100%);
 }
 
+/* Original project video */
+
 #about .video {
+  display: block;
+
   width: 760px;
   max-width: 100%;
-  margin-top: 24px;
+  height: auto;
+
+  margin: 24px auto 0;
 }
 
 
 /* ============================================
-   6. ABOUT DESCRIPTION COLUMNS
+   7. ABOUT DESCRIPTION COLUMNS
    ============================================ */
 
 #description {
   display: grid;
+
   grid-template-columns:
-    minmax(0, 1fr) minmax(0, 1fr);
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
   gap: 40px;
   align-items: start;
 }
@@ -195,7 +250,7 @@ header img {
 
 
 /* ============================================
-   7. EVENTS SECTION
+   8. EVENTS HEADING
    ============================================ */
 
 #events {
@@ -205,8 +260,10 @@ header img {
 #events .events-heading {
   display: flex;
   flex-direction: column;
+
   align-items: flex-end;
   justify-content: flex-end;
+
   min-height: 70px;
 }
 
@@ -214,9 +271,11 @@ header img {
   font-size: 32px;
   line-height: 1.2;
   font-weight: 400;
+
   position: relative;
-  margin: 0 2% 4px 0;
   text-align: right;
+
+  margin: 0 2% 4px 0;
 }
 
 /* Original crossed-out Events heading */
@@ -233,25 +292,33 @@ header img {
 #events .events-heading img {
   position: static;
   display: block;
+
   width: auto;
   max-width: 100%;
   height: 42px;
+
   object-fit: contain;
   margin: 0 0 -2px auto;
 }
 
-/* Events table */
+
+/* ============================================
+   9. EVENTS TABLE
+   ============================================ */
 
 #events table {
-  margin-top: 0;
   width: 100%;
+  margin-top: 0;
+
   border-collapse: collapse;
+
   font-size: clamp(13px, 1.2vw, 16px);
   line-height: 1.5;
 }
 
 #events table td {
   padding: 9px 8px;
+
   border-top: 1px solid rgba(0, 0, 0, 0.55);
   vertical-align: top;
 }
@@ -259,6 +326,7 @@ header img {
 #events table td:first-child {
   width: 15%;
   min-width: 145px;
+
   border-right: 1px solid rgba(0, 0, 0, 0.55);
   padding-left: 0;
 }
@@ -279,13 +347,14 @@ header img {
 
 
 /* ============================================
-   8. COLLABORATORS
+   10. COLLABORATORS
    ============================================ */
 
 #collaborators h1 {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+
   gap: 2rem;
   margin-bottom: 34px;
 }
@@ -304,18 +373,21 @@ header img {
   text-align: right;
 }
 
-/* Three-column original collaborators list */
-
 #collaborators .collaborator-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
   gap: 5%;
 }
 
 #collaborators .collaborator-column {
   list-style: none;
+
   margin: 0;
   padding: 0;
+
   font-size: clamp(14px, 1.2vw, 17px);
   line-height: 1.55;
 }
@@ -332,7 +404,7 @@ header img {
 
 
 /* ============================================
-   9. FOOTER AND CONTACT
+   11. FOOTER AND CONTACT
    ============================================ */
 
 footer .logos a {
@@ -341,14 +413,16 @@ footer .logos a {
 
 footer .contact a {
   color: #ff1212;
+
   text-decoration: underline;
   text-underline-offset: 2px;
+
   overflow-wrap: anywhere;
 }
 
 
 /* ============================================
-   10. DIALOGFLOW CHATBOT
+   12. DIALOGFLOW CHATBOT
    ============================================ */
 
 df-messenger {
@@ -357,17 +431,18 @@ df-messenger {
   --df-messenger-chat-background-color: #fff;
   --df-messenger-send-icon: #ff1212;
   --df-messenger-user-message: #e7e7e7;
+
   z-index: 1000;
 }
 
 
 /* ============================================
-   11. MOBILE LAYOUT
+   13. MOBILE LAYOUT
    ============================================ */
 
 @media (max-width: 600px) {
 
-  /* Header and logo */
+  /* Logo */
 
   header {
     height: auto;
@@ -377,17 +452,20 @@ df-messenger {
   header img {
     position: relative;
     display: block;
-    height: auto;
-    width: 80%;
-    max-width: 390px;
+
     top: auto;
     right: auto;
     left: auto;
+
+    height: auto;
+    width: 80%;
+    max-width: 390px;
+
     transform: none;
-    margin: 10px 3% 10px auto;
+    margin: 12px 3% 12px auto;
   }
 
-  /* GAN portrait grid */
+  /* GAN portraits: five columns */
 
   #GANS,
   #ri-grid,
@@ -398,40 +476,45 @@ df-messenger {
 
   #myList,
   .ri-grid ul {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(5, minmax(0, 1fr));
   }
-
-  /* Show 25 portraits on mobile */
 
   #myList li:nth-child(n+26) {
     display: none;
   }
 
-  /* Restore portraits 49 and 50 if needed
-     only the first 25 remain visible */
-
-  #myList li > img:not(.portrait-crossfade) {
-    opacity: 1 !important;
-    transition: none !important;
-  }
-
-  /* Main page sections */
+  /* Sections */
 
   .section {
     width: 85%;
     margin: 45px auto 75px;
   }
 
+  /* Allow About to follow grid naturally */
+
+  #about.section {
+    margin-top: 45px;
+  }
+
+  /* Headings */
+
+  #about h1,
+  #events .events-heading h1,
+  #collaborators h1 span {
+    font-size: 25px;
+  }
+
   /* About */
 
   #about h1 {
-    font-size: 25px;
     margin: 0 0 16px;
   }
 
   #about p {
     font-size: 21px;
     line-height: 1.45;
+
     width: 100%;
     max-width: 100%;
   }
@@ -443,9 +526,10 @@ df-messenger {
   #about .video {
     width: 100%;
     max-width: 100%;
+    margin-top: 24px;
   }
 
-  /* Description columns */
+  /* Description stacks into one column */
 
   #description {
     grid-template-columns: 1fr;
@@ -465,10 +549,6 @@ df-messenger {
 
   #events .events-heading {
     min-height: 65px;
-  }
-
-  #events .events-heading h1 {
-    font-size: 25px;
   }
 
   #events .events-heading img {
@@ -496,10 +576,6 @@ df-messenger {
     align-items: center;
   }
 
-  #collaborators h1 span {
-    font-size: 25px;
-  }
-
   #collaborators h1 img {
     display: block;
     width: 65%;
@@ -507,13 +583,71 @@ df-messenger {
   }
 
   #collaborators .collaborator-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
     gap: 16px;
   }
 
   #collaborators .collaborator-column {
     font-size: 14px;
     line-height: 1.55;
+  }
+}
+
+
+/* ============================================
+   14. SMALLER DESKTOPS AND TABLETS
+   ============================================ */
+
+@media (min-width: 601px) and (max-width: 900px) {
+
+  header {
+    height: clamp(140px, 20dvh, 190px);
+  }
+
+  #about.section {
+    margin-top: max(
+      65px,
+      calc(
+        100dvh
+        - clamp(140px, 20dvh, 190px)
+        - 18.75vw
+        - 100px
+      )
+    );
+  }
+
+  #about p {
+    font-size: 21px;
+  }
+
+  #description {
+    gap: 24px;
+  }
+
+  #description p {
+    font-size: 15px;
+  }
+
+  #events table {
+    font-size: 12px;
+  }
+}
+
+
+/* ============================================
+   15. ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  #myList li > img.portrait-crossfade {
+    transition: none;
   }
 }
 
