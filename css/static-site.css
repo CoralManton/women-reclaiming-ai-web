@@ -1,34 +1,35 @@
 
-/* ==========================================
-   WOMEN RECLAIMING AI: Static remake of original
-   ========================================== */
-
-/* Responsive desktop header */
-
-header {
-  height: clamp(120px, 18vh, 190px);
-}
-
-header img {
-  height: 85%;
-  width: auto;
-  max-width: 90%;
-  right: 2%;
-}
-
-/* GAN portrait grid */
-
-#GANS {
-  opacity: .62;
-}
-
-/* Responsive GAN image grid - desktop */
+/* Homepage */
 
 @media (min-width: 601px) {
 
+  /* Logo and header */
+
+  header {
+    height: 22vh;
+    min-height: 110px;
+    max-height: 220px;
+    position: relative;
+  }
+
+  header img {
+    position: absolute;
+    height: 88%;
+    width: auto;
+    max-width: 85vw;
+    top: 50%;
+    right: 2%;
+    transform: translateY(-50%);
+  }
+
+  /* GAN portrait grid */
+
   .ri-grid {
-    width: 100%;
-    max-width: 100%;
+    width: min(
+      100%,
+      calc((100dvh - clamp(110px, 22vh, 220px) - 12px) * 2)
+    );
+    max-width: none;
     margin: 0 auto;
   }
 
@@ -36,24 +37,64 @@ header img {
     display: grid;
     grid-template-columns: repeat(10, minmax(0, 1fr));
     width: 100%;
+    padding: 0;
+    margin: 0;
   }
 
   .ri-grid ul li {
-    aspect-ratio: 1 / 1;
+    width: 100%;
     height: auto;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
   }
 
   .ri-grid ul li img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
-  /* Keep the grid within the available screen height */
-  .ri-grid {
-    max-width: min(100%, calc((100vh - 210px) * 2));
+  .ri-grid ul li:nth-child(n+51) {
+    display: none;
   }
 }
+
+/* Mobile: retain original responsive layout */
+
+@media (max-width: 600px) {
+
+  header {
+    height: auto;
+    min-height: 150px;
+  }
+
+  header img {
+    position: relative;
+    display: block;
+    transform: none;
+    top: auto;
+    right: auto;
+    height: auto;
+    width: 80%;
+    max-width: 390px;
+    margin: 10px 3% 10px auto;
+  }
+
+  .ri-grid {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .ri-grid ul {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .ri-grid ul li {
+    aspect-ratio: 1 / 1;
+  }
+}
+
 
 /* About section */
 
