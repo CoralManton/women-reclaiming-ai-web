@@ -3,21 +3,17 @@
    WOMEN RECLAIMING AI: Static remake of original
    ========================================== */
 
-/* Original layout */
+/* Responsive desktop header */
 
 header {
-  height: 132px;
+  height: clamp(120px, 18vh, 190px);
 }
 
 header img {
-  height: 112px;
-  right: 10px;
-}
-
-.section {
-  width: 80%;
-  max-width: 1400px;
-  margin: 75px auto 105px;
+  height: 85%;
+  width: auto;
+  max-width: 90%;
+  right: 2%;
 }
 
 /* GAN portrait grid */
