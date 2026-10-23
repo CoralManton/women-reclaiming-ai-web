@@ -62,7 +62,7 @@ header img { height: 185px; max-width: min(90vw, 510px); width: auto; right: 1.5
 #collaborators h1 span { font-size: 32px; line-height: 1.2; font-weight: 400; }
 #about p { font-size: clamp(21px, 2.1vw, 28px); line-height: 1.55; width: 800px; max-width: 90%; }
 #about p img { width: min(450px, 100%); }
-#about .video { width: 760px; max-width: 85%; }
+#about .video { width: 760px; max-width: 100%; }
 #description p { font-size: clamp(15px, 1.35vw, 18px); line-height: 1.65; }
 #events table { font-size: clamp(13px, 1.2vw, 16px); line-height: 1.5; }
 #events .events-heading img { height: 42px; }
