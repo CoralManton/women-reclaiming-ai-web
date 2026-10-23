@@ -1,0 +1,321 @@
+/*
+Theme Name: Woman Reclaiming AI
+Theme URI: https://www.crumbdesign.co.uk
+Author: Crumb Solutions Ltd
+Author URI: https://www.crumbdesign.co.uk
+Description: Theme designed for the Cornerstone Praxis website.
+Version: 1.0
+*/
+
+html, body{
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    background-color: #ff1212;
+    font-family: 'Space Mono', monospace;
+}
+
+h1{
+    font-weight: 100;
+}
+
+header{
+    width: 100%;
+    height: 260px;
+    position: relative;
+}
+
+header img{
+    height: 250px;
+    position: absolute;
+    margin: auto;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+}
+
+.section{
+    width: 80%;
+    margin: 180px auto;
+    position: relative;
+    
+}
+
+#GANS{
+    opacity: 0.6;
+}
+
+#about h1{
+    text-align: right;
+    font-size: 35px;
+    
+}
+
+#about p{
+    font-size: 30px;
+    width: 800px;
+    max-width: 80%;
+}
+
+#about p img{
+    width: auto;
+    width: 550px;
+    max-width: 100%;
+}
+
+#about .video{
+    display: block;
+    margin: auto;
+    position: relative;
+    width: 860px;
+    max-width: 80%;
+    opacity: 0.6;
+}
+
+#description p{
+    font-size: 20px;
+    text-align: left;
+}
+
+#description{
+    display: flex;
+    justify-content: space-between;
+}
+
+#description .column{
+    width: 45%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#description img{
+    max-width: 70%;
+    margin: 0px auto;
+}
+
+#events h1{
+    text-align:right;
+    position: relative;
+}
+
+#events h1:after{
+    content: " ";
+    display: inline-block;
+    background-image: url(img/assets/gifs/underline-strike.gif);
+    width: 130px;
+    height: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 0px;
+    top: 19px;
+}
+
+#events img{
+    display: block;
+    position: absolute;
+    height: 47px;
+    right: -5%;
+}
+
+#events table{
+    margin: auto;
+    margin-top: 60px;
+    width: 100%;
+    font-size: 18px;
+    border-collapse: collapse;
+    border-bottom-style: solid;
+    border-color: rgba(0,0,0,0.6);
+    border-width: 1px;
+}
+
+#events td{
+    padding: 10px 0px;
+    border-width: 1px;
+}
+
+#events .event .date{
+    border-top-style: solid;
+    border-color: rgba(0,0,0,0.6);
+}
+
+#events .event .details{
+    border-top-style: solid;
+    border-left-style: solid;
+    border-color: rgba(0,0,0,0.6);
+    padding-left: 20px;
+}
+
+#events .event .details a{
+    color: white;
+}
+
+#collaborators h1{
+    display: flex;
+    justify-content: space-between;
+}
+
+#collaborators h1 img{
+    max-width: 50%;
+    align-self: center;
+}
+
+#collaborators p{
+    column-count: 3;
+    font-size: 19px;
+}
+
+footer{
+    background-color: black;
+    color: #ff1212;
+}
+
+footer .links{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0px;
+}
+
+footer .links .sub{
+    width: 33%;
+}
+
+footer .links h3{
+    font-weight: 100;
+   /* padding-left: 25px;*/
+}
+
+footer .links h3:before{
+    content:"";
+    display: inline-block;
+    width: 25px;
+    height: 15px;
+    background-image: none;
+    background-size: contain;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-image: url(img/assets/gifs/asterix.gif);
+}
+
+footer .links ul{
+    list-style-type: none; 
+    padding-left:0;
+}
+
+footer .links ul li a{
+    color: #ff1212;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+footer .links ul li a:before{
+    content:"";
+    display: inline-block;
+    width: 25px;
+    height: 15px;
+    background-image: none;
+    background-size: contain;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+}
+
+footer .links ul li a:hover:before{
+    content: "";
+    background-image: url(img/assets/gifs/asterix.gif);
+}
+
+footer .logos{
+    width: 75%;
+    padding: 10px 0px;
+    margin: auto;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-color: #ff1212;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .sub{
+    display: inline-block;
+    max-width: 30%;
+}
+
+footer .logos p{
+    font-size: 9.5px;
+}
+
+footer .logos p img{
+    padding-top: 4px;
+}
+
+footer .logos p.brand{
+    font-size: 10px;
+}
+
+footer .logos p.brand a{
+    color: #ff1212;
+}
+
+/*Chatbot style*/
+#chatbot{
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    
+    width: 80px;
+    height: 80px;
+    max-width: calc(100% - 40px);
+    max-height: calc(100% - 100px);
+    
+    -webkit-transition: height 0.8s, width 0.8s, border-radius 0.8s;
+    transition: height 0.8s, width 0.8s, border-radius 0.8s;
+}
+
+#chatbot{
+    background-image: url(img/assets/Chat_icon.png);
+    background-size: 40px 40px;
+    background-position: 20px 20px;
+    background-repeat: no-repeat;
+    background-color: #2b303e;
+    border-radius: 50%;
+    display: block;
+    
+    cursor: pointer;
+}
+
+#chatbot iframe{
+    opacity: 0;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    
+    -webkit-transition: opacity 0.8s;
+    transition: opacity 0.8s;
+}
+
+#chatbot.display{
+    width: 350px;
+    height: 430px;
+    border-radius: 0%;
+    cursor:auto;
+}
+
+#chatbot.display:before{
+    content: "\f057";
+    font-family: "Font Awesome 5 Free";
+    display:block;
+    left: -35px;
+    font-size:30px;
+    position: absolute;
+    cursor: pointer;
+}
+
+#chatbot.display iframe{
+    opacity: 1;
+    pointer-events: auto;
+    transition-delay: 0.8s;
+}

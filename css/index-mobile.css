@@ -1,0 +1,98 @@
+.mobileonly{
+    display: none;
+    text-align: center;
+    color: white;
+}
+
+@media only screen and (max-width: 600px) {
+    header{
+        height: auto;
+    }
+    
+    header img{
+        width: 95%;
+        height: auto;
+        margin: 20px auto;
+        left: 0px;
+        right: 0px;
+        display: block;
+        position: relative;
+    }
+    
+    .section{
+        margin: auto;
+    }
+    
+    #about h1{
+        text-align: center;
+    }
+    
+    #about p{
+        text-align: center;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    #about .video{
+        width: 100%;
+        max-width: 100%;
+        background-color: rgba(0,0,0,0.9);
+    }
+    
+    #description{
+        display: block;
+    }
+    
+    #description .column{
+        width: 100%;
+    }
+    
+    #events img{
+        width: 100%;
+        height: auto;
+        right: auto;
+    }
+    
+    #events table{
+        font-size: 15px;
+    }
+    
+    #collaborators h1{
+        display: block;
+    }
+    
+    #collaborators h1 img{
+        display: none;
+    }
+    
+    #collaborators p{
+        column-count: 1;
+        font-size: 20px;
+        text-align: center;
+    }
+    
+    footer .links, footer .logos{
+        display: block
+    }
+    
+    footer .links *{
+        display: none;
+    }
+    
+    footer .links .mobile{
+        display: block;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    footer .logos .mobile{
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+    
+    #catapultCookie{
+        background-color: buttonface;
+        color: buttontext;
+    }
+}
