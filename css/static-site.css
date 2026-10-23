@@ -1,4 +1,4 @@
-/* Static rebuild: retains the original WRAI theme assets and layout. */
+/* Static rebuild of original WRAI website */
 header { height: 132px; }
 header img {height: 112px; right: 10px;}
 .section { width:80%; max-width:1400px; margin: 75px auto 105px; }
@@ -24,3 +24,14 @@ header img {height: 112px; right: 10px;}
 footer .logos a {color:#ff1212;}
 df-messenger {--df-messenger-bot-message:#e9f0ff;--df-messenger-button-titlebar-color:#ff1212;--df-messenger-chat-background-color:#fff;--df-messenger-send-icon:#ff1212;--df-messenger-user-message:#e7e7e7;z-index:1000;}
 @media (max-width:600px){header{height:auto;}header img{height:auto;width:55%;margin:12px 8px 12px auto;}.ri-grid ul{grid-template-columns:repeat(5,minmax(0,1fr));}.ri-grid ul li:nth-child(n+26){display:none;}.section{width:85%;margin:45px auto 75px;}#about p{font-size:15px;max-width:100%;}#about .video{max-width:100%;}#description .column{width:100%;}#description p{font-size:12px;}#events img{position:relative;margin:0 0 18px auto;width:85%;height:auto;right:auto;}#events table{font-size:10px;}#events .event .date{width:110px;}#collaborators h1 img{display:block;max-width:85%;}}
+#events {position:relative;}
+#events .events-heading {display:flex; flex-direction:column; align-items:flex-end; justify-content:flex-end; min-height:70px;}
+#events .events-heading h1 {font-size:26px; line-height:1.15; font-weight:400; position:relative; margin:0 2% 4px 0; text-align:right;}
+#events .events-heading h1:after {right:0; top:50%; width:105px; height:16px;}
+#events .events-heading img {position:static; display:block; width:auto; max-width:100%; height:36px; object-fit:contain; margin:0 0 -2px auto;}
+#events table {margin-top:0; width:100%; border-collapse:collapse;}
+#events table td {padding:9px 8px; border-top:1px solid rgba(0,0,0,.55); vertical-align:top;}
+#events table td:first-child {width:15%; min-width:145px; border-right:1px solid rgba(0,0,0,.55); padding-left:0;}
+#events table td:nth-child(2) {padding-left:15px;}
+#events .event-title {text-decoration:underline; color:#fff;}
+@media(max-width:600px){#events .events-heading {min-height:65px;}#events .events-heading h1{font-size:21px;}#events .events-heading img{width:min(95%,330px);height:auto;margin:0 0 3px auto;}#events table td:first-child{min-width:90px;width:31%;}#events table td:nth-child(2){padding-left:8px;}}
