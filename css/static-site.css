@@ -1,80 +1,551 @@
-/* Static rebuild of original WRAI website */
-header { height: 132px; }
-header img {height: 112px; right: 10px;}
-.section { width:80%; max-width:1400px; margin: 75px auto 105px; }
-#GANS { opacity:.62; }
-.ri-grid {margin:0; width:100%;}
-.ri-grid ul {display:grid;grid-template-columns:repeat(10,minmax(0,1fr));width:100%; list-style:none;padding:0;margin:0;}
-.ri-grid ul li {float:none;aspect-ratio:1/1;min-width:0; height:auto;overflow:hidden;background:#9b1515;}
-.ri-grid ul li img {display:block;width:100%;height:100%;object-fit:cover;}
-.ri-grid ul li:nth-child(n+51) {display:none;}
-#about h1 { font-size:18px; margin:0 0 14px; }
-#about p {font-size:18px;width:680px; max-width:80%;}
-#about p img {max-width:100%;width:330px;display:block;}
-#about .video {width:500px; max-width:70%;margin-top:24px;}
-#description p {font-size:13px;line-height:1.4;}
-#description img {max-width:80%;}
-#events h1 {font-size:18px;}
-#events img {height:32px;}
-#events table {font-size:12px;}
-#events td {padding:6px 0;}
-#events .event .details {padding-left:12px;}
-#events .event .event-title {color:white;text-decoration:underline;}
-#collaborators p {font-size:13px;column-count:1;}
-footer .logos a {color:#ff1212;}
-df-messenger {--df-messenger-bot-message:#e9f0ff;--df-messenger-button-titlebar-color:#ff1212;--df-messenger-chat-background-color:#fff;--df-messenger-send-icon:#ff1212;--df-messenger-user-message:#e7e7e7;z-index:1000;}
-@media (max-width:600px){header{height:auto;}header img{height:auto;width:55%;margin:12px 8px 12px auto;}.ri-grid ul{grid-template-columns:repeat(5,minmax(0,1fr));}.ri-grid ul li:nth-child(n+26){display:none;}.section{width:85%;margin:45px auto 75px;}#about p{font-size:15px;max-width:100%;}#about .video{max-width:100%;}#description .column{width:100%;}#description p{font-size:12px;}#events img{position:relative;margin:0 0 18px auto;width:85%;height:auto;right:auto;}#events table{font-size:10px;}#events .event .date{width:110px;}#collaborators h1 img{display:block;max-width:85%;}}
 
+/* ==========================================
+   WOMEN RECLAIMING AI: Static remake of original
+   ========================================== */
 
-#events {position:relative;}
-#events .events-heading {display:flex; flex-direction:column; align-items:flex-end; justify-content:flex-end; min-height:70px;}
-#events .events-heading h1 {font-size:26px; line-height:1.15; font-weight:400; position:relative; margin:0 2% 4px 0; text-align:right;}
-#events .events-heading h1:after {right:0; top:50%; width:105px; height:16px;}
-#events .events-heading img {position:static; display:block; width:auto; max-width:100%; height:36px; object-fit:contain; margin:0 0 -2px auto;}
-#events table {margin-top:0; width:100%; border-collapse:collapse;}
-#events table td {padding:9px 8px; border-top:1px solid rgba(0,0,0,.55); vertical-align:top;}
-#events table td:first-child {width:15%; min-width:145px; border-right:1px solid rgba(0,0,0,.55); padding-left:0;}
-#events table td:nth-child(2) {padding-left:15px;}
-#events .event-title {text-decoration:underline; color:#fff;}
-@media(max-width:600px){#events .events-heading {min-height:65px;}#events .events-heading h1{font-size:21px;}#events .events-heading img{width:min(95%,330px);height:auto;margin:0 0 3px auto;}#events table td:first-child{min-width:90px;width:31%;}#events table td:nth-child(2){padding-left:8px;}}
+/* Original layout */
 
+header {
+  height: 132px;
+}
 
-#collaborators h1 {display:flex; align-items:flex-start; justify-content:space-between; gap:2rem; margin-bottom:34px;}
-#collaborators h1 img {position:static; width:52%; height:auto; object-fit:contain;}
-#collaborators h1 span {font-size:26px; font-weight:400; line-height:1.1; text-align:right;}
-#collaborators .collaborator-grid {display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:5%;}
-#collaborators .collaborator-column {list-style:none; margin:0; padding:0; font-size:16px; line-height:1.4;}
-#collaborators .collaborator-column li {margin:0; padding:0;}
-@media(max-width:600px){#collaborators h1 {align-items:center;}#collaborators h1 span{font-size:20px;}#collaborators h1 img{width:65%;}#collaborators .collaborator-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}#collaborators .collaborator-column{font-size:13px;}}
+header img {
+  height: 112px;
+  right: 10px;
+}
 
+.section {
+  width: 80%;
+  max-width: 1400px;
+  margin: 75px auto 105px;
+}
 
-#about h1 { font-size:26px; line-height:1.15; font-weight:400; text-align:right; margin:0 2% 18px 0; }
-footer .contact a { color:#ff1212; text-decoration:underline; text-underline-offset:2px; overflow-wrap:anywhere; }
-@media(max-width:600px) { #about h1 { font-size:21px; margin:0 0 16px; } }
+/* GAN portrait grid */
 
-header { height: 300px; }
-header img { height: 285px; max-width: min(90vw, 510px); width: auto; right: 1.5%; }
+#GANS {
+  opacity: .62;
+}
+
+.ri-grid {
+  margin: 0;
+  width: 100%;
+}
+
+.ri-grid ul {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ri-grid ul li {
+  float: none;
+  aspect-ratio: 1 / 1;
+  min-width: 0;
+  height: auto;
+  overflow: hidden;
+  background: #9b1515;
+}
+
+.ri-grid ul li img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ri-grid ul li:nth-child(n+51) {
+  display: none;
+}
+
+/* About section */
+
+#about h1 {
+  font-size: 18px;
+  margin: 0 0 14px;
+}
+
+#about p {
+  font-size: 18px;
+  width: 680px;
+  max-width: 80%;
+}
+
+#about p img {
+  max-width: 100%;
+  width: 330px;
+  display: block;
+}
+
+#about .video {
+  width: 500px;
+  max-width: 70%;
+  margin-top: 24px;
+}
+
+#description p {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+#description img {
+  max-width: 80%;
+}
+
+/* Events section */
+
+#events h1 {
+  font-size: 18px;
+}
+
+#events img {
+  height: 32px;
+}
+
+#events table {
+  font-size: 12px;
+}
+
+#events td {
+  padding: 6px 0;
+}
+
+#events .event .details {
+  padding-left: 12px;
+}
+
+#events .event .event-title {
+  color: white;
+  text-decoration: underline;
+}
+
+/* Collaborators */
+
+#collaborators p {
+  font-size: 13px;
+  column-count: 1;
+}
+
+/* Footer */
+
+footer .logos a {
+  color: #ff1212;
+}
+
+/* Dialogflow chatbot */
+
+df-messenger {
+  --df-messenger-bot-message: #e9f0ff;
+  --df-messenger-button-titlebar-color: #ff1212;
+  --df-messenger-chat-background-color: #fff;
+  --df-messenger-send-icon: #ff1212;
+  --df-messenger-user-message: #e7e7e7;
+  z-index: 1000;
+}
+
+/* Original mobile styles */
+
+@media (max-width: 600px) {
+  header {
+    height: auto;
+  }
+
+  header img {
+    height: auto;
+    width: 55%;
+    margin: 12px 8px 12px auto;
+  }
+
+  .ri-grid ul {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .ri-grid ul li:nth-child(n+26) {
+    display: none;
+  }
+
+  .section {
+    width: 85%;
+    margin: 45px auto 75px;
+  }
+
+  #about p {
+    font-size: 15px;
+    max-width: 100%;
+  }
+
+  #about .video {
+    max-width: 100%;
+  }
+
+  #description .column {
+    width: 100%;
+  }
+
+  #description p {
+    font-size: 12px;
+  }
+
+  #events img {
+    position: relative;
+    margin: 0 0 18px auto;
+    width: 85%;
+    height: auto;
+    right: auto;
+  }
+
+  #events table {
+    font-size: 10px;
+  }
+
+  #events .event .date {
+    width: 110px;
+  }
+}
+
+/* ==========================================
+   EVENTS - ARCHIVAL LAYOUT
+   ========================================== */
+
+#events {
+  position: relative;
+}
+
+#events .events-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  min-height: 70px;
+}
+
+#events .events-heading h1 {
+  font-size: 26px;
+  line-height: 1.15;
+  font-weight: 400;
+  position: relative;
+  margin: 0 2% 4px 0;
+  text-align: right;
+}
+
+#events .events-heading h1:after {
+  right: 0;
+  top: 50%;
+  width: 105px;
+  height: 16px;
+}
+
+#events .events-heading img {
+  position: static;
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: 36px;
+  object-fit: contain;
+  margin: 0 0 -2px auto;
+}
+
+#events table {
+  margin-top: 0;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#events table td {
+  padding: 9px 8px;
+  border-top: 1px solid rgba(0, 0, 0, .55);
+  vertical-align: top;
+}
+
+#events table td:first-child {
+  width: 15%;
+  min-width: 145px;
+  border-right: 1px solid rgba(0, 0, 0, .55);
+  padding-left: 0;
+}
+
+#events table td:nth-child(2) {
+  padding-left: 15px;
+}
+
+#events .event-title {
+  text-decoration: underline;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  #events .events-heading {
+    min-height: 65px;
+  }
+
+  #events .events-heading h1 {
+    font-size: 21px;
+  }
+
+  #events .events-heading img {
+    width: min(95%, 330px);
+    height: auto;
+    margin: 0 0 3px auto;
+  }
+
+  #events table td:first-child {
+    min-width: 90px;
+    width: 31%;
+  }
+
+  #events table td:nth-child(2) {
+    padding-left: 8px;
+  }
+}
+
+/* ==========================================
+   COLLABORATORS - ARCHIVAL LAYOUT
+   ========================================== */
+
+#collaborators h1 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 34px;
+}
+
+#collaborators h1 img {
+  position: static;
+  width: 52%;
+  height: auto;
+  object-fit: contain;
+}
+
+#collaborators h1 span {
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.1;
+  text-align: right;
+}
+
+#collaborators .collaborator-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 5%;
+}
+
+#collaborators .collaborator-column {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+#collaborators .collaborator-column li {
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 600px) {
+  #collaborators h1 {
+    align-items: center;
+  }
+
+  #collaborators h1 span {
+    font-size: 20px;
+  }
+
+  #collaborators h1 img {
+    width: 65%;
+  }
+
+  #collaborators .collaborator-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  #collaborators .collaborator-column {
+    font-size: 13px;
+  }
+}
+
+/* ==========================================
+   ABOUT HEADING AND CONTACT
+   ========================================== */
+
+#about h1 {
+  font-size: 26px;
+  line-height: 1.15;
+  font-weight: 400;
+  text-align: right;
+  margin: 0 2% 18px 0;
+}
+
+footer .contact a {
+  color: #ff1212;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   TYPOGRAPHY REFINEMENTS
+   ========================================== */
+
 #about h1,
 #events .events-heading h1,
-#collaborators h1 span { font-size: 32px; line-height: 1.2; font-weight: 400; }
-#about p { font-size: clamp(21px, 2.1vw, 28px); line-height: 1.55; width: 800px; max-width: 90%; }
-#about p img { width: min(450px, 100%); }
-#about .video { width: 760px; max-width: 100%; }
-#description p { font-size: clamp(15px, 1.35vw, 18px); line-height: 1.65; }
-#events table { font-size: clamp(13px, 1.2vw, 16px); line-height: 1.5; }
-#events .events-heading img { height: 42px; }
-#collaborators .collaborator-column { font-size: clamp(14px, 1.2vw, 17px); line-height: 1.55; }
+#collaborators h1 span {
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+#about p {
+  font-size: clamp(21px, 2.1vw, 28px);
+  line-height: 1.55;
+  width: 800px;
+  max-width: 90%;
+}
+
+#about p img {
+  width: min(450px, 100%);
+}
+
+#about .video {
+  width: 760px;
+  max-width: 100%;
+}
+
+#description p {
+  font-size: clamp(15px, 1.35vw, 18px);
+  line-height: 1.65;
+}
+
+#events table {
+  font-size: clamp(13px, 1.2vw, 16px);
+  line-height: 1.5;
+}
+
+#events .events-heading img {
+  height: 42px;
+}
+
+#collaborators .collaborator-column {
+  font-size: clamp(14px, 1.2vw, 17px);
+  line-height: 1.55;
+}
+
+/* ==========================================
+   FINAL DESIGN ADJUSTMENTS
+   Larger logo and aligned About columns
+   ========================================== */
+
+/* Logo size */
+
+header {
+  height: 360px;
+}
+
+header img {
+  height: 340px;
+  width: auto;
+  max-width: 95%;
+  right: 1.5%;
+}
+
+/* Align the two About text columns */
+
+#description {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+
+#description .column {
+  width: 100%;
+  min-width: 0;
+  margin-top: 0;
+}
+
+#description .column > :first-child {
+  margin-top: 0;
+}
+
+/* ==========================================
+   FINAL MOBILE ADJUSTMENTS
+   ========================================== */
+
 @media (max-width: 600px) {
-  header { height: auto; min-height: 155px; }
-  header img { position: relative; display: block; height: auto; width: 78%; max-width: 390px; margin: 10px 3% 10px auto; right: auto; left: auto; }
+
+  /* Logo */
+
+  header {
+    height: auto;
+    min-height: 180px;
+  }
+
+  header img {
+    position: relative;
+    display: block;
+    height: auto;
+    width: 90%;
+    max-width: 390px;
+    margin: 10px 3% 10px auto;
+    right: auto;
+    left: auto;
+  }
+
+  /* Section headings */
+
   #about h1,
   #events .events-heading h1,
-  #collaborators h1 span { font-size: 25px; }
-  #about p { font-size: 21px; line-height: 1.45; width: 100%; max-width: 100%; }
-  #about p img { width: min(100%, 360px); }
-  #about .video { max-width: 100%; }
-  #description p { font-size: 15px; line-height: 1.6; }
-  #events .events-heading img { height: auto; }
-  #events table { font-size: 12px; }
-  #collaborators .collaborator-column { font-size: 14px; line-height: 1.55; }
+  #collaborators h1 span {
+    font-size: 25px;
+  }
+
+  /* About text */
+
+  #about p {
+    font-size: 21px;
+    line-height: 1.45;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #about p img {
+    width: min(100%, 360px);
+  }
+
+  #about .video {
+    max-width: 100%;
+  }
+
+  /* Stack description columns */
+
+  #description {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  #description p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* Events */
+
+  #events .events-heading img {
+    height: auto;
+  }
+
+  #events table {
+    font-size: 12px;
+  }
+
+  /* Collaborators */
+
+  #collaborators .collaborator-column {
+    font-size: 14px;
+    line-height: 1.55;
+  }
 }
