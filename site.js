@@ -1,65 +1,168 @@
-/* Women Reclaiming AI — GAN portrait animation */
+
+/* ============================================
+   WOMEN RECLAIMING AI
+   GAN PORTRAIT ANIMATION
+   ============================================ */
+
 (() => {
-  const items = [...document.querySelectorAll('#myList li')];
-  const images = items.map(li => li.querySelector('img')).filter(Boolean);
-  if (images.length < 49) return;
 
-  const sources = images.map(img => img.currentSrc || img.src);
-  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const mobile = window.matchMedia('(max-width: 600px)');
-  const INTERVAL_MS = 1800;
-  const FADE_MS = 650;
-  const MAX_PER_CYCLE = 13;
-  const busy = new Set();
-  let next = 48;
+  const items = [
+    ...document.querySelectorAll('#myList li')
+  ];
 
-  const replacePortrait = img => {
-    if (busy.has(img)) return;
-    busy.add(img);
-    const nextSource = sources[next++ % sources.length];
+  const photos = items
+    .map(li => li.querySelector('img')?.src)
+    .filter(Boolean);
+
+  if (items.length < 81) return;
+
+  /* ==========================================
+     ANIMATION SETTINGS
+     ========================================== */
+
+  const desktopVisible = 80;
+  const mobileVisible = 25;
+
+  const changeInterval = 1800;
+  const fadeDuration = 650;
+  const maxChanging = 13;
+
+  let photoIndex = desktopVisible;
+
+  const busy = new WeakSet();
+
+  const reduceMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  );
+
+  /* ==========================================
+     CHANGE A SINGLE PORTRAIT
+     ========================================== */
+
+  async function changePortrait(li) {
+
+    if (busy.has(li)) return;
+
+    const original = li.querySelector('img');
+
+    if (!original) return;
+
+    busy.add(li);
+
+    const nextPhoto =
+      photos[photoIndex++ % photos.length];
+
+    /* Load next portrait before animating */
+
     const preload = new Image();
-    preload.onload = () => {
-      // Overlay the incoming photo; the old photo stays fully visible below.
-      const tile = img.closest('li');
-      if (!tile || !tile.contains(img) || motion.matches) {
-        busy.delete(img);
-        return;
+    preload.src = nextPhoto;
+
+    try {
+      if (preload.decode) {
+        await preload.decode();
+      } else {
+        await new Promise((resolve, reject) => {
+          if (preload.complete && preload.naturalWidth) {
+            resolve();
+          } else {
+            preload.onload = resolve;
+            preload.onerror = reject;
+          }
+        });
       }
+
+      /* Place new portrait over existing one */
+
       const overlay = document.createElement('img');
-      overlay.src = nextSource;
+
+      overlay.className = 'portrait-crossfade';
+      overlay.src = nextPhoto;
       overlay.alt = '';
       overlay.setAttribute('aria-hidden', 'true');
-      overlay.className = 'portrait-crossfade';
-      tile.appendChild(overlay);
-      // Trigger transition after the overlay has entered the document.
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        overlay.style.opacity = '1';
-      }));
-      const finish = () => {
-        if (!tile.contains(overlay)) return;
-        img.src = nextSource;
-        overlay.remove();
-        busy.delete(img);
-      };
-      overlay.addEventListener('transitionend', finish, { once: true });
-      setTimeout(finish, FADE_MS + 150);
-    };
-    preload.onerror = () => busy.delete(img);
-    preload.src = nextSource;
-  };
 
-  const tick = () => {
-    if (motion.matches || document.hidden) return;
-    const shown = images.slice(0, mobile.matches ? 25 : 48).filter(img => !busy.has(img));
-    if (!shown.length) return;
-    const count = Math.min(shown.length, 2 + Math.floor(Math.random() * 2), MAX_PER_CYCLE);
-    for (let i = 0; i < count; i++) {
-      const index = Math.floor(Math.random() * shown.length);
-      const [selected] = shown.splice(index, 1);
-      replacePortrait(selected);
+      li.appendChild(overlay);
+
+      /* Fade new portrait in */
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          overlay.style.opacity = '1';
+        });
+      });
+
+      await new Promise(resolve => {
+        setTimeout(resolve, fadeDuration + 80);
+      });
+
+      /* Make replacement permanent */
+
+      original.src = nextPhoto;
+
+      overlay.remove();
+
+    } catch (error) {
+
+      /* Keep existing image if loading fails */
+
+    } finally {
+
+      busy.delete(li);
+
     }
-  };
+  }
 
-  setInterval(tick, INTERVAL_MS);
+  /* ==========================================
+     CHANGE RANDOM GROUP OF PORTRAITS
+     ========================================== */
+
+  function animateGrid() {
+
+    if (reduceMotion.matches) return;
+
+    const isMobile = window.matchMedia(
+      '(max-width: 600px)'
+    ).matches;
+
+    const countVisible = isMobile
+      ? mobileVisible
+      : desktopVisible;
+
+    const visible = items.slice(0, countVisible);
+
+    const available = visible.filter(
+      li => !busy.has(li)
+    );
+
+    if (!available.length) return;
+
+    /* Randomly change 1 to 13 portraits */
+
+    const count = Math.min(
+      available.length,
+      Math.floor(Math.random() * maxChanging) + 1
+    );
+
+    /* Shuffle without duplicate selections */
+
+    for (let i = available.length - 1; i > 0; i--) {
+
+      const j = Math.floor(Math.random() * (i + 1));
+
+      [available[i], available[j]] =
+        [available[j], available[i]];
+
+    }
+
+    available.slice(0, count).forEach(
+      changePortrait
+    );
+  }
+
+  /* ==========================================
+     START ANIMATION
+     ========================================== */
+
+  setInterval(animateGrid, changeInterval);
+
 })();
 
