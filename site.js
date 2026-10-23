@@ -9,7 +9,7 @@
   const mobile = window.matchMedia('(max-width: 600px)');
   const INTERVAL_MS = 1800;
   const FADE_MS = 650;
-  const MAX_PER_CYCLE = 3;
+  const MAX_PER_CYCLE = 13;
   const busy = new Set();
   let next = 48;
 
