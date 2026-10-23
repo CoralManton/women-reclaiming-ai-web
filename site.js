@@ -1,5 +1,5 @@
 
-/* Animated GAN portraits — Women Reclaiming AI */
+/* Women Reclaiming AI - Animated GAN Grid */
 
 (() => {
   const items = [...document.querySelectorAll('#myList li')];
@@ -9,8 +9,10 @@
 
   let idx = 50;
 
-  const changeInterval = 100;  // Change every 0.5 seconds
-  const fadeDuration = 250;    // Fade transition in milliseconds
+  /* Animation settings */
+  const changeInterval = 500;
+  const fadeDuration = 250;
+  const maxChanging = 10;
 
   items.forEach(li => {
     const img = li.querySelector('img');
@@ -18,19 +20,27 @@
   });
 
   setInterval(() => {
-    const isMobile = window.matchMedia('(max-width:600px)').matches;
+    const isMobile =
+      window.matchMedia('(max-width:600px)').matches;
+
     const visible = items.slice(0, isMobile ? 25 : 50);
 
-    const cell = visible[
-      Math.floor(Math.random() * visible.length)
-    ].querySelector('img');
+    /* Pick up to 10 different portraits */
+    const count = Math.floor(Math.random() * maxChanging) + 1;
 
-    cell.style.opacity = '0.1';
+    const shuffled = [...visible].sort(() => Math.random() - 0.5);
+    const selected = shuffled.slice(0, count);
 
-    setTimeout(() => {
-      cell.src = photos[idx++ % photos.length];
-      cell.style.opacity = '1';
-    }, fadeDuration);
+    selected.forEach(li => {
+      const img = li.querySelector('img');
+
+      img.style.opacity = '0.1';
+
+      setTimeout(() => {
+        img.src = photos[idx++ % photos.length];
+        img.style.opacity = '1';
+      }, fadeDuration);
+    });
 
   }, changeInterval);
 })();
