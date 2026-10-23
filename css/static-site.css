@@ -10,18 +10,19 @@
    ============================================ */
 
 header {
-  height: clamp(110px, 17dvh, 180px);
+  height: clamp(150px, 22dvh, 240px);
   position: relative;
+  box-sizing: border-box;
 }
 
 header img {
   position: absolute;
-  height: 87%;
-  width: auto;
-  max-width: 85vw;
-  top: 50%;
+  top: 16px;
   right: 2%;
-  transform: translateY(-50%);
+  height: clamp(110px, 16dvh, 170px);
+  width: auto;
+  max-width: min(32vw, 380px);
+  transform: none;
 }
 
 
