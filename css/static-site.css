@@ -158,7 +158,7 @@ header img {
 
   #about.section {
     margin-top: max(
-      75px,
+      35px,
       calc(
         100dvh
         - clamp(160px, 23dvh, 230px)
